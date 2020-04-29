@@ -1,4 +1,4 @@
-# Project Soundly
+# Soundly Music Application Project
 
 
 ### Login Details
@@ -6,9 +6,9 @@
     - Pass: test1
 
 ### My Role in the Project
-    - Design Wireframes
-    - Registration/Login System
-    - Contact Us Form 
+    - Designed Wireframes
+    - Developed Registration/Login System
+    - Developed Contact Us Form 
 
 ### Team Members
     - Elmira A.
