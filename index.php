@@ -11,6 +11,9 @@ require_once "Models/Database.php";
 $reg = new Account();
 
 $login_errmsg = '';
+$login_errmsgusr = '';
+$login_errmsgpw = '';
+
 
 
 //function to remb the input values that the user puts in
@@ -30,11 +33,12 @@ if (isset($_POST['loginButton'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    if ($username == "") {
-        $login_errmsg = 'A username field is required.';
+    if ($username == "" && $password == "") {
+        $login_errmsgusr = 'A username is required.';
+        $login_errmsgpw = 'A password is required.';
 
-    } else if ($password == "") {
-        $login_errmsg = 'A password field is required.';
+    //} //else if ($password == "") {
+        //$login_errmsgpw = 'A password is required.';
 
     } else {
         $id = $reg->Login($username, $password); // Checks user login details
@@ -47,54 +51,10 @@ if (isset($_POST['loginButton'])) {
           }
           else
           {
-              $login_errmsg = 'Invalid login details. Please check your username and password.';
+              $login_errmsg = 'Invalid login details. Please check your username and password and try again.';
           }
     }
 }
-
-
-?>
-
-
-
-
-
-
-
-
-
-<?php
-
-
-
-    //connects to login handler
-    //include_once("handlers/login-handler.php");
-    //include("Models/Database.php");
-
-
-    //echo $account->getError(Constants::$loginFailed); 
-/*
- 
-    require_once 'core/init.php';
-
-    //echo Config::get('mysql/host');
-
-    DB::getInstance();
-
-    $user = DB::getInstance()->query("SELECT username FROM user_accounts WHERE username = ?", array('alex'));
-
-    
-    if($user->error()) {
-
-      echo 'No user';
-
-    } else {
-
-      echo 'Okay user!';
-
-    }
-
-*/
 
 
 ?>
@@ -122,17 +82,31 @@ if (isset($_POST['loginButton'])) {
             <h3>The ultimate music player</h3>
           </div>
 
-          <?php
-            if ($login_errmsg != "") {
-                echo '<div class="alert"><h4><strong>Error: </strong> ' . $login_errmsg . '</h4></div>';
-            }
-          ?>
+           <?php
+            //if ($login_errmsg != "") {
+              //  echo '<div class="alert"><h4><strong>Error: </strong> ' . $login_errmsg . '</h4></div>';
+            // }
+
+            echo '<div class="error"> ' . $login_errmsg .  '</div>';
+
+          ?> 
 
           <div>
             <form id="loginform" action="" method="POST">
+              <label for="usern">Username</label>
               <input class="input-login form-control" id="usern" type="text" name="username" placeholder="Username" value="<?php getInputValue('username') ?>">
 
+              <?php
+                    echo '<div class="error"> ' . $login_errmsgusr .  '</div>';
+              ?>
+
+              <label for="userp">Password</label>
               <input class="input-login form-control" id="userp" type="password" name="password" placeholder="Password">
+
+
+              <?php
+                    echo '<div class="error"> ' . $login_errmsgpw .  '</div>';
+              ?>
 
               <div class="buttons">
                 <button type="submit" name="loginButton" id="login" class="btn btn-primary btn-login" >Log In</button>

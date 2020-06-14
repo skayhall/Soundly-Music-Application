@@ -7,8 +7,9 @@
 body, html {
   height: 100%;
 }
+
 .bg {
-  height: 100%;
+  height: auto;
   background-image: url("../images/background.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -21,12 +22,9 @@ img{
 }
 .container{
   padding: 10% 29%;
-<<<<<<< HEAD
 }
 .container h2{
   font-size: 31px;
-=======
->>>>>>> 4fd11d0734dec33d3c64597a7efe5aba04ade732
 }
 
 .container h2 {
@@ -43,8 +41,14 @@ img{
   padding: 25px;
   border: none;
   border-radius: 50px;
-  margin-top: 5%;
+  margin-top: 2%;
 }
+
+label {
+  margin-top:20px;
+  margin-bottom:0px;
+}
+
 .buttons{
   margin: 5% 0;
 }
@@ -57,3 +61,7 @@ img{
   border-radius: 50px;
 }
 
+.error {
+  border-bottom:0px;
+  color:red;
+}
